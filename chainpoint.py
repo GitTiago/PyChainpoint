@@ -14,7 +14,7 @@ class Chainpoint(object):
         receipt_version = None
         if 'header' in receipt:
             # header section was found, so this could be a pre-v2 receipt
-            receipt_version = receipt[u'header']['chainpoint_version']
+            receipt_version = receipt['header']['chainpoint_version']
         else:
             # no header was found, so it is not a v1.x receipt, check for v2
             if 'type' in receipt:
@@ -62,7 +62,9 @@ class Chainpoint(object):
             self._assertHex(proof['left'], 64)
             self._assertHex(proof['right'], 64)
             self._assertHex(proof['parent'], 64)
-            node_hash = hashlib.sha256(proof['left'] + proof['right']).hexdigest()
+            before_hash = proof['left'] + proof['right']
+            byte_string = before_hash.encode(encoding='utf-8')
+            node_hash = hashlib.sha256(byte_string).hexdigest()
             if proof['parent'] != node_hash:
                 raise AssertionError("Invalid proof path")
 
