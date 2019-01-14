@@ -1,5 +1,5 @@
 import unittest
-from ..chainpoint import Chainpoint
+from chainpoint import Chainpoint
 
 class ChainpointCommonTestCase(unittest.TestCase):
     def test_null_receipt(self):
@@ -25,7 +25,7 @@ class ChainpointCommonTestCase(unittest.TestCase):
         receipt = '{}'
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Cannot identify Chainpoint version')
+        self.assertEqual(str(err.exception), 'Cannot identify Chainpoint version')
 
     def test_unsupported_version(self):
         validator = Chainpoint()
@@ -36,7 +36,7 @@ class ChainpointCommonTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(ValueError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid Chainpoint version: 0.9')
+        self.assertEqual(str(err.exception), 'Invalid Chainpoint version: 0.9')
 
 
 class Chainpointv1xTestCase(unittest.TestCase):
@@ -50,7 +50,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing hash_type')
+        self.assertEqual(str(err.exception), 'Missing hash_type')
 
     def test_missing_target(self):
         validator = Chainpoint()
@@ -65,7 +65,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing target')
+        self.assertEqual(str(err.exception), 'Missing target')
 
     def test_missing_root(self):
         validator = Chainpoint()
@@ -78,7 +78,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing tx_id')
+        self.assertEqual(str(err.exception), 'Missing tx_id')
 
     def test_missing_tx(self):
         validator = Chainpoint()
@@ -91,7 +91,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing target')
+        self.assertEqual(str(err.exception), 'Missing target')
 
     def test_missing_timestamp(self):
         validator = Chainpoint()
@@ -106,7 +106,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing timestamp')
+        self.assertEqual(str(err.exception), 'Missing timestamp')
 
     def test_unsupported_hash_type(self):
         validator = Chainpoint()
@@ -119,7 +119,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash type: sha1')
+        self.assertEqual(str(err.exception), 'Invalid hash type: sha1')
 
     def test_bad_root(self):
         validator = Chainpoint()
@@ -134,7 +134,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing target')
+        self.assertEqual(str(err.exception), 'Missing target')
 
     def test_bad_tx(self):
         validator = Chainpoint()
@@ -149,7 +149,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid hash value: bad-tx-id-value")
+        self.assertEqual(str(err.exception), "Invalid hash value: bad-tx-id-value")
 
     def test_bad_timestamp(self):
         validator = Chainpoint()
@@ -165,7 +165,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid timestamp: sdfsdf')
+        self.assertEqual(str(err.exception), 'Invalid timestamp: sdfsdf')
 
     def test_missing_target_hash(self):
         validator = Chainpoint()
@@ -181,7 +181,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing target_hash')
+        self.assertEqual(str(err.exception), 'Missing target_hash')
 
     def test_bad_target_hash(self):
         validator = Chainpoint()
@@ -200,7 +200,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash value: badhash')
+        self.assertEqual(str(err.exception), 'Invalid hash value: badhash')
 
     def test_missing_target_proof(self):
         validator = Chainpoint()
@@ -218,7 +218,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing target_proof')
+        self.assertEqual(str(err.exception), 'Missing target_proof')
 
     def test_bad_target_proof(self):
         validator = Chainpoint()
@@ -237,7 +237,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid target_proof: None')
+        self.assertEqual(str(err.exception), 'Invalid target_proof: None')
 
     def test_empty_target_proof(self):
         validator = Chainpoint()
@@ -256,7 +256,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid target_proof: ')
+        self.assertEqual(str(err.exception), 'Invalid target_proof: ')
 
     def test_garbage_target_proof(self):
         validator = Chainpoint()
@@ -275,7 +275,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid target_proof: kjeflwi')
+        self.assertEqual(str(err.exception), 'Invalid target_proof: kjeflwi')
 
     def test_empty_object_target_proof(self):
         validator = Chainpoint()
@@ -294,7 +294,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid target_proof: {}')
+        self.assertEqual(str(err.exception), 'Invalid target_proof: {}')
 
     def test_bad_object_target_proof(self):
         validator = Chainpoint()
@@ -313,7 +313,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid target_proof: {u'parent': u'something'}")
+        self.assertEqual(str(err.exception), "Invalid target_proof: {'parent': 'something'}")
 
     def test_empty_list_target_proof(self):
         validator = Chainpoint()
@@ -356,7 +356,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Missing parent")
+        self.assertEqual(str(err.exception), "Missing parent")
 
     def test_invalid_target_proof_bad_right(self):
         validator = Chainpoint()
@@ -386,7 +386,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid hash value: cvbcvb")
+        self.assertEqual(str(err.exception), "Invalid hash value: cvbcvb")
 
     def test_invalid_target_proof_parent_matching(self):
         validator = Chainpoint()
@@ -413,7 +413,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid proof path")
+        self.assertEqual(str(err.exception), "Invalid proof path")
 
     def test_invalid_target_proof_parent_matching_target_hash0(self):
         validator = Chainpoint()
@@ -440,7 +440,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid proof path")
+        self.assertEqual(str(err.exception), "Invalid proof path")
 
     def test_invalid_target_proof_parent_matching_target_hash1(self):
         validator = Chainpoint()
@@ -467,7 +467,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Invalid proof path")
+        self.assertEqual(str(err.exception), "Invalid proof path")
 
     def test_invalid_target_proof_missing_left(self):
         validator = Chainpoint()
@@ -493,7 +493,7 @@ class Chainpointv1xTestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, "Missing left")
+        self.assertEqual(str(err.exception), "Missing left")
 
     def test_invalid_target_proof_parent_merkle_matching(self):
         validator = Chainpoint()
@@ -575,7 +575,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid Chainpoint type: ChainpointSHA256v35')
+        self.assertEqual(str(err.exception), 'Invalid Chainpoint type: ChainpointSHA256v35')
 
     def test_unsupported_version2(self):
         validator = Chainpoint()
@@ -585,7 +585,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid Chainpoint type: ChainpointSHA256v35')
+        self.assertEqual(str(err.exception), 'Invalid Chainpoint type: ChainpointSHA256v35')
 
     def test_missing_hash_type(self):
         validator = Chainpoint()
@@ -598,7 +598,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid Chainpoint type: Chainpointv2')
+        self.assertEqual(str(err.exception), 'Invalid Chainpoint type: Chainpointv2')
 
     def test_unsupported_hash_type(self):
         validator = Chainpoint()
@@ -611,7 +611,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid Chainpoint type: ChainpointSHA2048v2')
+        self.assertEqual(str(err.exception), 'Invalid Chainpoint type: ChainpointSHA2048v2')
 
     def test_missing_target_hash(self):
         validator = Chainpoint()
@@ -623,7 +623,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing targetHash')
+        self.assertEqual(str(err.exception), 'Missing targetHash')
 
     def test_invalid_target_hash(self):
         validator = Chainpoint()
@@ -636,7 +636,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash value: invalid')
+        self.assertEqual(str(err.exception), 'Invalid hash value: invalid')
 
     def test_missing_merkle_root(self):
         validator = Chainpoint()
@@ -648,7 +648,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing merkleRoot')
+        self.assertEqual(str(err.exception), 'Missing merkleRoot')
 
     def test_invalid_merkle_root(self):
         validator = Chainpoint()
@@ -660,7 +660,7 @@ class Chainpointv2TestCase(unittest.TestCase):
             "proof": {}}'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash value: invalid')
+        self.assertEqual(str(err.exception), 'Invalid hash value: invalid')
 
     def test_missing_target_proof(self):
         validator = Chainpoint()
@@ -672,7 +672,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing proof')
+        self.assertEqual(str(err.exception), 'Missing proof')
 
     def test_missing_target_proof97861(self):
         validator = Chainpoint()
@@ -685,7 +685,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing proof')
+        self.assertEqual(str(err.exception), 'Missing proof')
 
     def test_invalid_target_proof3(self):
         validator = Chainpoint()
@@ -698,7 +698,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid path')
+        self.assertEqual(str(err.exception), 'Invalid path')
 
     def test_invalid_target_proof2(self):
         validator = Chainpoint()
@@ -711,7 +711,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing proof')
+        self.assertEqual(str(err.exception), 'Missing proof')
 
     def test_invalid_target_proof3(self):
         validator = Chainpoint()
@@ -724,7 +724,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Missing proof')
+        self.assertEqual(str(err.exception), 'Missing proof')
 
     def test_invalid_empty_target_proof(self):
         validator = Chainpoint()
@@ -748,7 +748,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid proof path')
+        self.assertEqual(str(err.exception), 'Invalid proof path')
 
     def test_invalid_missing_left_target_proof(self):
         validator = Chainpoint()
@@ -761,7 +761,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash value: something')
+        self.assertEqual(str(err.exception), 'Invalid hash value: something')
 
     def test_invalid_missing_right_target_proof(self):
         validator = Chainpoint()
@@ -774,7 +774,7 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         with self.assertRaises(AssertionError) as err:
             validator.valid_receipt(receipt)
-        self.assertEqual(err.exception.message, 'Invalid hash value: something')
+        self.assertEqual(str(err.exception), 'Invalid hash value: something')
 
     def test_invalid_target_proof_4(self):
         validator = Chainpoint()
