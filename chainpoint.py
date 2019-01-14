@@ -2,6 +2,7 @@ import re
 import json
 import hashlib
 from merkletools import MerkleTools
+import six
 
 
 class Chainpoint(object):
@@ -48,7 +49,7 @@ class Chainpoint(object):
         self._assertHex(receipt_header['tx_id'], 64)
         tx_id = receipt_header['tx_id']
         timestamp = receipt_header['timestamp']
-        if not isinstance(timestamp, (int, long)):
+        if not isinstance(timestamp, six.integer_types):
             raise AssertionError("Invalid timestamp: %s" % timestamp)
 
         self._assertHex(target['target_hash'], 64)
