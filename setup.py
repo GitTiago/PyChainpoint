@@ -5,12 +5,12 @@ from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 install_requires = [
-    "merkletools==1.0.0"
+    "merkletools"
 ]
 
 setup(
     name='chainpoint',
-    version='1.0.0',
+    version='0.1.0',
     description='Chainpoint proof of existance library',
     classifiers=[
         "Intended Audience :: Developers",
