@@ -1,7 +1,6 @@
 import os
 
-import setuptools
-from setuptools import setup
+from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 install_requires = [
@@ -27,7 +26,7 @@ setup(
     author='Tiago Santos',
     keywords='proof of existence, blockchain, merkle tree',
     license="MIT",
-    packages=setuptools.find_packages(include=("chainpoint3.py",)),
+    packages=find_packages(),
     include_package_data=False,
     zip_safe=False,
     install_requires=install_requires
