@@ -110,7 +110,6 @@ class Chainpoint(object):
         merkle_tools = MerkleTools(hash_type=hash_type)
         return merkle_tools.validate_proof(proof, target_hash, merkle_root)
 
-
     @staticmethod
     def _assertHex(val, hash_len):
         try:
