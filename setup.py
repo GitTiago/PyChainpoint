@@ -16,7 +16,6 @@ setup(
     version='0.1.0',
     description='Chainpoint proof of existence library',
     long_description=long_description,
-    long_description_content_type="text/markdown",
     classifiers=[
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
