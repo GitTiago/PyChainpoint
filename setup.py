@@ -1,5 +1,6 @@
 import os
 
+import setuptools
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -26,7 +27,7 @@ setup(
     author='Tiago Santos',
     keywords='proof of existence, blockchain, merkle tree',
     license="MIT",
-    packages=".",
+    packages=setuptools.find_packages(include=("chainpoint3.py",)),
     include_package_data=False,
     zip_safe=False,
     install_requires=install_requires
