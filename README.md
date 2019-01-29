@@ -7,7 +7,7 @@ A Python 3 module for validating Chainpoint blockchain receipts. Fork of [pychai
 ### Installation
 
 ```
-$ pip install chainpoint
+$ pip install chainpoint3
 ```
 
 ### Usage
@@ -22,7 +22,7 @@ chainpoint_validate.is_valid_receipt(receipt)
 #### Example
 
 ```python
-from chainpoint import Chainpoint
+from chainpoint3 import Chainpoint
 
 receipt = '''{
     "header": {

@@ -1,6 +1,5 @@
 import os
 
-from setuptools import find_packages
 from setuptools import setup
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -13,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='chainpoint3',
-    version='0.1.0',
+    version='0.1.1',
     description='Chainpoint proof of existence library',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -27,7 +26,7 @@ setup(
     author='Tiago Santos',
     keywords='proof of existence, blockchain, merkle tree',
     license="MIT",
-    packages=find_packages(),
+    packages=".",
     include_package_data=False,
     zip_safe=False,
     install_requires=install_requires
