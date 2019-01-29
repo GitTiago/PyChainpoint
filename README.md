@@ -2,7 +2,7 @@
 
 
 
-A Python module for validating Chainpoint blockchain receipts
+A Python 3 module for validating Chainpoint blockchain receipts. Fork of [pychainpoint](https://github.com/lontivero/PyChainpoint).
 
 ### Installation
 

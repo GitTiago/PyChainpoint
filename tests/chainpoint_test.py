@@ -1,5 +1,6 @@
 import unittest
-from chainpoint import Chainpoint
+from chainpoint3 import Chainpoint
+
 
 class ChainpointCommonTestCase(unittest.TestCase):
     def test_null_receipt(self):
@@ -812,7 +813,6 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         self.assertTrue(validator.valid_receipt(receipt))
 
-
     def test_key_path(self):
         receipt = '''{
             "@context": "https://w3id.org/chainpoint/v2",
@@ -837,4 +837,3 @@ class Chainpointv2TestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
