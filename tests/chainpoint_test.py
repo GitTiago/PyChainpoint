@@ -1,5 +1,6 @@
 import unittest
-from chainpoint import Chainpoint
+from chainpoint3 import Chainpoint
+
 
 class ChainpointCommonTestCase(unittest.TestCase):
     def test_null_receipt(self):
