@@ -812,7 +812,6 @@ class Chainpointv2TestCase(unittest.TestCase):
         }'''
         self.assertTrue(validator.valid_receipt(receipt))
 
-
     def test_key_path(self):
         receipt = '''{
             "@context": "https://w3id.org/chainpoint/v2",
@@ -837,4 +836,3 @@ class Chainpointv2TestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
