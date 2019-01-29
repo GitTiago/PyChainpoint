@@ -1,7 +1,6 @@
 import os
 
-from setuptools import find_packages
-from setuptools import setup
+from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
 install_requires = [
@@ -13,7 +12,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='chainpoint3',
-    version='0.1.0',
+    version='0.1.1',
     description='Chainpoint proof of existence library',
     long_description=long_description,
     long_description_content_type="text/markdown",
