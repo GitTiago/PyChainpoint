@@ -8,19 +8,24 @@ install_requires = [
     "merkletools"
 ]
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
-    name='chainpoint',
+    name='chainpoint3',
     version='0.1.0',
-    description='Chainpoint proof of existance library',
+    description='Chainpoint proof of existence library',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     classifiers=[
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
     ],
-    url='https://github.com/lontivero/pychainpoint',
-    author='Lucas Ontivero',
-    keywords='proof of existance, blockchain, merkle tree',
+    url='https://github.com/GitTiago/pychainpoint',
+    author='Tiago Santos',
+    keywords='proof of existence, blockchain, merkle tree',
     license="MIT",
     packages=find_packages(),
     include_package_data=False,
